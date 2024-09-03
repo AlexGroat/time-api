@@ -19,7 +19,7 @@ class TimeUnitService
     /**
      * Convert the time interval in seconds to the specified time unit.
      */
-    public function unitConversion(): int
+    public function unitConversion(): int|float
     {
         $response = null;
 
@@ -38,10 +38,11 @@ class TimeUnitService
         }
 
         if ($this->units === TimeUnitsEnum::YEARS->value) {
-            $response = $this->timeIntervalInSeconds / 31536000; // seconds in
+            $response = $this->timeIntervalInSeconds / 31536000; //
+            // seconds in
             // a year
         }
 
-        return (int) $response;
+        return round($response, 2);
     }
 }
