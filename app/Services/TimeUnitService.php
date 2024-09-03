@@ -21,28 +21,15 @@ class TimeUnitService
      */
     public function unitConversion(): int|float
     {
-        $response = null;
+        $unitDivisors = [
+            TimeUnitsEnum::SECONDS->value => 1,
+            TimeUnitsEnum::MINUTES->value => 60,
+            TimeUnitsEnum::HOURS->value => 3600,
+            TimeUnitsEnum::YEARS->value => 31536000,
+        ];
 
-        if ($this->units === TimeUnitsEnum::SECONDS->value) {
-            $response = $this->timeIntervalInSeconds;
-        }
+        $divisor = $unitDivisors[$this->units];
 
-        if ($this->units === TimeUnitsEnum::MINUTES->value) {
-            $response = $this->timeIntervalInSeconds / 60; // seconds in a
-            // minute
-        }
-
-        if ($this->units === TimeUnitsEnum::HOURS->value) {
-            $response = $this->timeIntervalInSeconds / 3600; // seconds in an
-            // hour
-        }
-
-        if ($this->units === TimeUnitsEnum::YEARS->value) {
-            $response = $this->timeIntervalInSeconds / 31536000; //
-            // seconds in
-            // a year
-        }
-
-        return round($response, 2);
+        return round($this->timeIntervalInSeconds / $divisor, 3);
     }
 }
