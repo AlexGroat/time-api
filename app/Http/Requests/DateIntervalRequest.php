@@ -3,7 +3,6 @@
 namespace App\Http\Requests;
 
 use App\Enums\TimeUnitsEnum;
-use App\Rules\DateFormatRule;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
@@ -40,8 +39,8 @@ class DateIntervalRequest extends FormRequest
     public function rules(): array
     {
         $rules = [
-            'startDate' => ['required', new DateFormatRule, 'before:endDate'],
-            'endDate' => ['required', new DateFormatRule, 'after:startDate'],
+            'startDate' => ['required', 'date', 'before:endDate'],
+            'endDate' => ['required', 'date', 'after:startDate'],
             'units' => ['nullable', 'string', Rule::in(collect(TimeUnitsEnum::cases())->toArray())],
         ];
 
@@ -61,9 +60,11 @@ class DateIntervalRequest extends FormRequest
     {
         return [
             'startDate.required' => 'The start date is required. Please provide one.',
+            'startDate.date' => 'The start date must be a valid date.',
             'startDate.before' => 'The start date must be before the end date.',
 
             'endDate.required' => 'The end date is required. Please provide one.',
+            'endDate.date' => 'The end date must be a valid date.',
             'endDate.after' => 'The end date must be after the start date.',
 
             'units.in' => 'Please choose a valid unit: seconds, minutes, hours, or years, if provided.',

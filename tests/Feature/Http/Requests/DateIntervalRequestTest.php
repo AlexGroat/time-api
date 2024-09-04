@@ -37,11 +37,11 @@ class DateIntervalRequestTest extends TestCase
             ->assertJsonFragment([
                 'startDate' => [
                     'The start date must be before the end date.',
-                    'The startDate must be a valid date.',
+                    'The start date must be a valid date.',
                 ],
                 'endDate' => [
                     'The end date must be after the start date.',
-                    'The endDate must be a valid date.',
+                    'The end date must be a valid date.',
                 ],
             ])
             ->assertJsonFragment([
