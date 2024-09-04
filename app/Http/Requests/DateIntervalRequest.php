@@ -61,7 +61,7 @@ class DateIntervalRequest extends FormRequest
     {
         return [
             'startDate.required' => 'The start date is required. Please provide one.',
-            'startDate.before' => 'The start date must be earlier than the end date.',
+            'startDate.before' => 'The start date must be before the end date.',
 
             'endDate.required' => 'The end date is required. Please provide one.',
             'endDate.after' => 'The end date must be after the start date.',
