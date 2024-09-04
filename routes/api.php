@@ -9,4 +9,5 @@ Route::get('/days-interval', DayIntervalController::class);
 
 Route::get('/weekdays-interval', WeekDayIntervalController::class);
 
-Route::get('/complete-weeks-interval', CompleteWeekIntervalController::class);
+Route::get('/complete-weeks-interval', CompleteWeekIntervalController::class)
+    ->name('complete-weeks-interval');

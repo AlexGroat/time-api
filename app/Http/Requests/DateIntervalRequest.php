@@ -39,11 +39,17 @@ class DateIntervalRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
+        $rules = [
             'startDate' => ['required', new DateFormatRule, 'before:endDate'],
             'endDate' => ['required', new DateFormatRule, 'after:startDate'],
             'units' => ['nullable', 'string', Rule::in(collect(TimeUnitsEnum::cases())->toArray())],
         ];
+
+        if ($this->routeIs('complete-weeks-interval')) {
+            $rules['precision'] = ['nullable', 'in:true'];
+        }
+
+        return $rules;
     }
 
     /**
