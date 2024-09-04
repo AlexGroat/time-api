@@ -30,6 +30,10 @@ class DayIntervalController extends Controller
             // day
         }
 
-        return response()->json($response);
+        return response()->json([
+            'success' => true,
+            'message' => 'Operation successful.',
+            'data' => $response,
+        ]);
     }
 }
