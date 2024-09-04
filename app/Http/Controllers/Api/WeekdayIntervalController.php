@@ -7,7 +7,7 @@ use App\Http\Requests\DateIntervalRequest;
 use App\Services\TimeUnitService;
 use Illuminate\Http\JsonResponse;
 
-class WeekDayIntervalController extends Controller
+class WeekdayIntervalController extends Controller
 {
     /**
      *  Calculate the time interval in weekdays between two dates and return the result in

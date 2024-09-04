@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Feature\Http\Requests;
 
 use App\Enums\TimeUnitsEnum;
 use Tests\TestCase;
