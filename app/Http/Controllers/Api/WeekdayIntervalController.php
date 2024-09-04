@@ -44,6 +44,10 @@ class WeekdayIntervalController extends Controller
             $response = $roundedWeekdays;
         }
 
-        return response()->json($response);
+        return response()->json([
+            'success' => true,
+            'message' => 'Operation successful.',
+            'data' => $response,
+        ]);
     }
 }
