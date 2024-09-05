@@ -40,6 +40,7 @@ class WeekdayIntervalController extends Controller
                 (int) $roundedWeekdays * 60 * 60 * 24,
                 $request->validated('units')
             ))->unitConversion();
+
         } else {
             $response = $roundedWeekdays;
         }

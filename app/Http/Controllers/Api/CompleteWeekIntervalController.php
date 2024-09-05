@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Enums\TimeUnitsEnum;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\DateIntervalRequest;
 use App\Services\TimeUnitService;
@@ -31,10 +32,18 @@ class CompleteWeekIntervalController extends Controller
                 (int) $timeInSeconds,
                 $request->validated('units')
             ))->unitConversion();
+
+            if ($request->validated('units') === TimeUnitsEnum::YEARS->value) {
+                $response = ceil($response);
+            }
         } else {
             $response = $completeWeeks;
         }
 
-        return response()->json($response);
+        return response()->json([
+            'success' => true,
+            'message' => 'Operation successful.',
+            'data' => $response,
+        ]);
     }
 }
