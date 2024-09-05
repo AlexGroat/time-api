@@ -116,8 +116,8 @@ class CompleteWeekIntervalControllerTest extends TestCase
     public function testWeekdayIntervalWithYearsSpecifiedReturnsCorrectYears()
     {
         $this->get(route('complete-weeks-interval', [
-            'startDate' => '2021-09-02',
-            'endDate' => '2022-09-02',
+            'startDate' => '2020-09-02',
+            'endDate' => '2021-09-03',
             'units' => 'years',
         ]))
             ->assertJson([

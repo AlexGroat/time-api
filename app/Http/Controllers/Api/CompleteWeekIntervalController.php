@@ -34,7 +34,7 @@ class CompleteWeekIntervalController extends Controller
             ))->unitConversion();
 
             if ($request->validated('units') === TimeUnitsEnum::YEARS->value) {
-                $response = ceil($response);
+                $response = round($response);
             }
         } else {
             $response = $completeWeeks;
